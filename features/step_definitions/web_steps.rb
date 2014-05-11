@@ -10,13 +10,22 @@ Given(/^I am on the homepage$/) do
   visit '/'
 end
 
-Given(/^there exists one peep$/) do
-  Peep.create(:peep => "This is a peep")
+# Given(/^there exists one peep with content "(.*?)"$/) do |elem|
+#  Peep.create(:peep => elem)
+# end
+
+# Given(/^there exists one peep "(.*?)"$/) do |elem|
+#   Peep.create(:peep => elem)
+# end
+
+When(/^there exists one peep "(.*?)"$/) do |elem|
+  Peep.create(:peep => elem)
 end
 
-Then(/^I should see the peep$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see the peep "(.*?)"$/) do |peep|
+  page.should have_content peep
 end
+
 
 
 
