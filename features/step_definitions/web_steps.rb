@@ -1,7 +1,8 @@
 
 Given(/^I am on the homepage and there exists one peep "(.*?)"$/) do |elem|
+  user = User.create(:name => "robin", :user_name => "robin_user", :email => "robin@test.com", :password => "password")
+  Peep.create(:peep => elem, :user => user)
   visit '/'
-  Peep.create(:peep => elem)
 end
 
 Then(/^I should see the peep "(.*?)"$/) do |peep|
@@ -10,9 +11,13 @@ end
 
 
 Given(/^I am on the homepage and there is a user "(.*?)" and they have created a peep$/) do |arg1|
-  visit '/'
-  user = User.create(:user => user)
+  user = User.create(:name => "robin", :user_name => "robin_user", :email => "robin@test.com", :password => "password")
   Peep.create(:peep => "dummy peep", :user => user)
+  visit '/'
+end
+
+Then(/^I should see the user name "(.*?)"$/) do |user|
+  page.should have_content user
 end
 
 

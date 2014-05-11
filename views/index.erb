@@ -3,7 +3,7 @@
 <body>
 		HELLO PEEP
 		<% @peeps.each do |tweet| %>	
-		<%= tweet.peep %>	
+		"<%= tweet.peep %>, <%= tweet.user.user_name %>"
 		<% end %>
 </body>
 
