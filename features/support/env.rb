@@ -21,17 +21,17 @@ World do
 end
 
 
-require 'database_cleaner'
+# require 'database_cleaner'
 
-DatabaseCleaner.strategy = :truncation
+# DatabaseCleaner.strategy = :truncation
 
-	Before do 
-  	DatabaseCleaner.start
-  end
+# 	Before do 
+#   	DatabaseCleaner.start
+#   end
 
-  After do 
-  	DatabaseCleaner.clean
-  end
+#   After do 
+#   	DatabaseCleaner.clean
+#   end
 
 
 

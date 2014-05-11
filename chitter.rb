@@ -7,6 +7,8 @@ env = ENV["RACK_ENV"] || "development"
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 
 require_relative './lib/peep'
+require_relative './lib/user'
+
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
