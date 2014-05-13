@@ -2,6 +2,16 @@
 
 	<body>
 
+			<% if flash[:errors] && !flash[:errors].empty? %>
+				 Sorry, there were the following problems with the form:
+		  <ul id="errors">
+				    <% flash[:errors].each do |error| %>
+	      <li><%= error %></li>
+				    <% end %>
+			  </ul>
+			<% end %>
+
+
 			<form action='/users/new' method='post'>
 			<input type="text" name="name" placeholder="name">
 			<input type="text" name="user_name" placeholder="user_name">

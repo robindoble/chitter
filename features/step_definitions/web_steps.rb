@@ -36,6 +36,10 @@ Then(/^I should see on homepage "(.*?)"$/) do |elem|
   page.should have_content elem
 end
 
+Given(/^I already have a user with email "(.*?)"$/) do |email|
+  user = User.create(:name => "robin_name", :user_name => "robin_user", :email => "robin@test.com", :password => "password", :password_confirmation => "password")
+end
+
 
 # require 'uri'
 # require 'cgi'

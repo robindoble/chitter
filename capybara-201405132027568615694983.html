@@ -10,13 +10,11 @@
 		  <input type='submit' value="register">
 		</form>
 
-		<% if current_user %>
-			Welcome <%= current_user.user_name %>
-		<% end %>
+		
+			Welcome robin_user
+		
 
-		<% @peeps.each do |tweet| %>	
-		"<%= tweet.peep %>, <%= tweet.user.name %>, <%= tweet.user.user_name %>"
-		<% end %>
+		
 </body>
 
 
