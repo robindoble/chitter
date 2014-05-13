@@ -1,23 +1,39 @@
 
 Given(/^I am on the homepage and there exists one peep "(.*?)"$/) do |elem|
-  user = User.create(:name => "robin", :user_name => "robin_user", :email => "robin@test.com", :password => "password")
+  user = User.create(:name => "robin", :user_name => "robin_user", :email => "robin@test.com", :password => "password", :password_confirmation => "password")
   Peep.create(:peep => elem, :user => user)
   visit '/'
 end
 
-Then(/^I should see the peep "(.*?)"$/) do |peep|
-  page.should have_content peep
-end
-
-
 Given(/^I am on the homepage and there is a user "(.*?)" and they have created a peep$/) do |arg1|
-  user = User.create(:name => "robin", :user_name => "robin_user", :email => "robin@test.com", :password => "password")
+  user = User.create(:name => "robin_name", :user_name => "robin_user", :email => "robin@test.com", :password => "password", :password_confirmation => "password")
   Peep.create(:peep => "dummy peep", :user => user)
   visit '/'
 end
 
-Then(/^I should see the user name "(.*?)"$/) do |user|
-  page.should have_content user
+Then(/^I should "(.*?)"$/) do |elem|
+  page.should have_content elem
+end
+
+Then(/^I should see "(.*?)"$/) do |elem|
+  page.should have_content elem
+end
+
+Given(/^I am on the homepage$/) do
+  visit '/'
+end
+
+When(/^I enter "(.*?)" in "(.*?)"$/) do |value, name|
+  fill_in(name, :with => value)
+end
+
+When(/^I click "(.*?)"$/) do |elem|
+  find_button(elem).click
+end
+
+Then(/^I should see on homepage "(.*?)"$/) do |elem|
+  save_and_open_page
+  page.should have_content elem
 end
 
 
