@@ -27,6 +27,11 @@ And I should see "Password does not match the confirmation"
 Scenario: Registered users can sign in
 Given I am on the homepage and a registered user
 When I sign in
-Then I should see "Welcome robin_user"
+Then I should see "robin_user"
+
+Scenario: Signing out
+Given I am signed in and on the homepage
+When I sign out
+Then I should see "Goodbye robin_user"
 
 

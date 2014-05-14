@@ -1,0 +1,19 @@
+<html>
+
+	<body>
+
+			<h3> WELCOME TO cHITTER <%= if current_user then current_user.user_name end %></h3>
+			
+			<% if current_user %>
+				<form method='post' action='/sessions'>
+					<input type='hidden' name='_method' value='delete'>
+					<input type='submit' value='sign out'>
+				</form>	
+			<% end %>
+
+			<%= yield %>	
+			
+	</body>
+
+
+</html>
