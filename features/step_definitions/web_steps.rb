@@ -32,7 +32,7 @@ When(/^I click "(.*?)"$/) do |elem|
 end
 
 Then(/^I should see on homepage "(.*?)"$/) do |elem|
-  save_and_open_page
+  # save_and_open_page
   page.should have_content elem
 end
 
@@ -40,6 +40,17 @@ Given(/^I already have a user with email "(.*?)"$/) do |email|
   user = User.create(:name => "robin_name", :user_name => "robin_user", :email => "robin@test.com", :password => "password", :password_confirmation => "password")
 end
 
+Given(/^I am on the homepage and a registered user$/) do
+  user = User.create(:name => "robin_name", :user_name => "robin_user", :email => "robin@test.com", :password => "password", :password_confirmation => "password")
+  visit '/'
+end
+
+When(/^I sign in$/) do
+   fill_in('email', :with => "robin@test.com")
+   fill_in('password', :with => "password") 
+   find_button('login').click
+   save_and_open_page
+end
 
 # require 'uri'
 # require 'cgi'
